@@ -33,14 +33,14 @@
     <section class="hero-section autoBlur">
       <div class="hero-vid">
         <video class="hero-video" autoplay muted loop plays-inline>
-          <source src="your-video.mp4" type="video/mp4" />
+          <source src="videos/hero-1.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
         <div class="hero-info">
           <h1>REDEFINE</h1>
           <p>The Metagame Layer Unleash the Play Economy</p>
-          <button>Watch Trailer</button>
+          <button class="watch-trailer-btn" id="watchTrailerBtn"><i class='bx bx-play-circle'></i> Watch Trailer</button>
         </div>
         <h1 class="gaming-text">Gaming</h1>
         <div class="next-btn">NEXT</div>
@@ -57,7 +57,7 @@
         <img src="img/about.webp" alt="about-img">
       </div>
       <h4>Game of Games begins-your life, now an epic MMORPG</h4>
-      <h5>Zentry unites every player from countless games and platforms, both digital and physical, int</h5>
+      <h5>Zentry unites every player from countless games and platforms, both digital and physical, into a unified Play Economy</h5>
 
     </section>
 
@@ -135,6 +135,47 @@
 
 
   </div>
+
+  <!-- Gaming Style Trailer Modal -->
+  <div class="trailer-modal" id="trailerModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="trailer-overlay" id="trailerOverlay"></div>
+    <div class="trailer-container">
+      <!-- HUD Corners -->
+      <span class="hud-corner top-left"></span>
+      <span class="hud-corner top-right"></span>
+      <span class="hud-corner bottom-left"></span>
+      <span class="hud-corner bottom-right"></span>
+
+      <!-- HUD Header -->
+      <div class="trailer-hud-header">
+        <div class="hud-status">
+          <span class="hud-dot"></span>
+          <span class="hud-text">SYS_FEED // ZENTRY TRAILER</span>
+        </div>
+        <div class="hud-meta">RES: 1080P // 60FPS</div>
+        <button class="trailer-close-btn" id="closeTrailerBtn" type="button" aria-label="Close Trailer">
+          <i class='bx bx-x'></i>
+          <span>CLOSE [ESC]</span>
+        </button>
+      </div>
+
+      <!-- Video Player Wrapper -->
+      <div class="trailer-video-wrapper">
+        <video id="trailerVideo" class="trailer-video" controls playsinline preload="auto">
+          <source src="videos/feature-1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="scanlines"></div>
+      </div>
+
+      <!-- HUD Footer -->
+      <div class="trailer-hud-footer">
+        <span class="hud-tag"><i class='bx bx-terminal'></i> STREAM // FEATURE-1.MP4</span>
+        <span class="hud-hint">PRESS <kbd>ESC</kbd> OR CLICK OUTSIDE TO EXIT</span>
+      </div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 

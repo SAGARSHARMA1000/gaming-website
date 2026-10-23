@@ -21,6 +21,72 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Gaming Style Watch Trailer Modal Logic
+  const watchTrailerBtn = document.getElementById("watchTrailerBtn") || document.querySelector(".watch-trailer-btn") || document.querySelector(".hero-info button");
+  const trailerModal = document.getElementById("trailerModal");
+  const trailerOverlay = document.getElementById("trailerOverlay");
+  const closeTrailerBtn = document.getElementById("closeTrailerBtn");
+  const trailerVideo = document.getElementById("trailerVideo");
+  const heroVideo = document.querySelector(".hero-video");
+
+  function openTrailer() {
+    if (!trailerModal || !trailerVideo) return;
+
+    // Pause hero background video while trailer is active
+    if (heroVideo && !heroVideo.paused) {
+      heroVideo.pause();
+    }
+
+    // Activate trailer modal
+    trailerModal.classList.add("active");
+    trailerModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    // Reset and play trailer video with sound
+    trailerVideo.currentTime = 0;
+    const playPromise = trailerVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((err) => {
+        console.warn("Trailer playback caught notice:", err);
+      });
+    }
+  }
+
+  function closeTrailer() {
+    if (!trailerModal || !trailerVideo) return;
+
+    trailerModal.classList.remove("active");
+    trailerModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+
+    // Pause trailer
+    trailerVideo.pause();
+
+    // Resume hero background video
+    if (heroVideo) {
+      heroVideo.play().catch(() => {});
+    }
+  }
+
+  if (watchTrailerBtn) {
+    watchTrailerBtn.addEventListener("click", openTrailer);
+  }
+
+  if (closeTrailerBtn) {
+    closeTrailerBtn.addEventListener("click", closeTrailer);
+  }
+
+  if (trailerOverlay) {
+    trailerOverlay.addEventListener("click", closeTrailer);
+  }
+
+  // Keyboard accessibility: ESC key closes trailer
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && trailerModal && trailerModal.classList.contains("active")) {
+      closeTrailer();
+    }
+  });
+
   // Mobile menu toggle
   const menuBtn = document.getElementById("menuBtn");
   const headRight = document.getElementById("headRight");

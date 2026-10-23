@@ -21,6 +21,22 @@ An Awwwards-inspired, modern, and fully responsive gaming website built with **H
 
 ---
 
+## 📸 Screenshots
+
+### Image 1
+![Image 1](demo/img1.png)
+
+### Image 2
+![Image 2](demo/img2.png)
+
+### Image 3
+![Image 3](demo/img3.png)
+
+### Image 4
+![Image 4](demo/img4.png)
+
+---
+
 ## 🛠️ Built With
 
 - **HTML5**: Semantic structure, responsive meta viewport, video embedding.
@@ -47,6 +63,7 @@ gaming/
 ├── style.css           # Global styles, animations & responsive media queries
 ├── app.js              # Interactive logic, trailer switcher & scroll engine
 ├── README.md           # Project documentation
+├── demo/               # Website screenshots (image 1, 2, 3)
 ├── img/                # Graphic assets, backgrounds & decorations
 │   ├── logo.png
 │   ├── about.webp

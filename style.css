@@ -675,3 +675,291 @@ transform: translateY(0) scale(1);
     font-size: 30px;
   }
 }
+
+/* ==========================================================================
+   Watch Trailer Button & Gaming Style Video Modal
+   ========================================================================== */
+.hero-info button.watch-trailer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 15px;
+  box-shadow: 0 0 10px rgba(237, 255, 102, 0.3);
+}
+
+.hero-info button.watch-trailer-btn i {
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.hero-info button.watch-trailer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px #edff66, 0 0 45px rgba(237, 255, 102, 0.4);
+}
+
+.hero-info button.watch-trailer-btn:hover i {
+  transform: scale(1.2);
+}
+
+.hero-info button.watch-trailer-btn:active {
+  transform: translateY(0);
+}
+
+.trailer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+}
+
+.trailer-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.trailer-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(12, 18, 28, 0.88) 0%, rgba(0, 0, 0, 0.96) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+}
+
+.trailer-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 960px;
+  background: rgba(10, 14, 20, 0.95);
+  border: 1px solid rgba(237, 255, 102, 0.45);
+  border-radius: 8px;
+  box-shadow: 
+    0 0 50px rgba(0, 0, 0, 0.9),
+    0 0 35px rgba(237, 255, 102, 0.25),
+    inset 0 0 25px rgba(237, 255, 102, 0.05);
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.trailer-modal.active .trailer-container {
+  transform: scale(1) translateY(0);
+}
+
+/* Sci-Fi HUD Corners */
+.hud-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: #edff66;
+  border-style: solid;
+  pointer-events: none;
+  z-index: 25;
+  filter: drop-shadow(0 0 6px #edff66);
+}
+
+.hud-corner.top-left {
+  top: 0;
+  left: 0;
+  border-width: 3px 0 0 3px;
+}
+
+.hud-corner.top-right {
+  top: 0;
+  right: 0;
+  border-width: 3px 3px 0 0;
+}
+
+.hud-corner.bottom-left {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 3px 3px;
+}
+
+.hud-corner.bottom-right {
+  bottom: 0;
+  right: 0;
+  border-width: 0 3px 3px 0;
+}
+
+/* HUD Header */
+.trailer-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, rgba(237, 255, 102, 0.1) 0%, rgba(20, 26, 35, 0.85) 50%, rgba(237, 255, 102, 0.06) 100%);
+  border-bottom: 1px solid rgba(237, 255, 102, 0.25);
+  font-family: 'Courier New', Courier, monospace, sans-serif;
+}
+
+.hud-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #edff66;
+  box-shadow: 0 0 10px #edff66;
+  animation: hudPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes hudPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 12px #edff66;
+  }
+  50% {
+    transform: scale(0.75);
+    opacity: 0.35;
+    box-shadow: 0 0 3px #edff66;
+  }
+}
+
+.hud-text {
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #edff66;
+  text-shadow: 0 0 8px rgba(237, 255, 102, 0.5);
+}
+
+.hud-meta {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+}
+
+.trailer-close-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(237, 255, 102, 0.12);
+  color: #edff66;
+  border: 1px solid #edff66;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.trailer-close-btn i {
+  font-size: 18px;
+}
+
+.trailer-close-btn:hover {
+  background: #edff66;
+  color: #000;
+  box-shadow: 0 0 15px #edff66;
+  transform: translateY(-1px);
+}
+
+/* Video Frame */
+.trailer-video-wrapper {
+  position: relative;
+  width: 100%;
+  background: #000;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trailer-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  display: block;
+  outline: none;
+}
+
+/* Retro Scanlines Gaming Effect */
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: 5;
+}
+
+/* HUD Footer */
+.trailer-hud-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(14, 18, 25, 0.9);
+  border-top: 1px solid rgba(237, 255, 102, 0.2);
+  font-family: 'Courier New', Courier, monospace, sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hud-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #edff66;
+}
+
+.hud-hint kbd {
+  background: rgba(237, 255, 102, 0.2);
+  color: #edff66;
+  border: 1px solid rgba(237, 255, 102, 0.4);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-family: inherit;
+  font-size: 10px;
+}
+
+/* Mobile Adjustments for Trailer */
+@media (max-width: 768px) {
+  .trailer-container {
+    width: 95%;
+  }
+  .hud-meta {
+    display: none;
+  }
+  .hud-text {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .trailer-close-btn span {
+    display: none;
+  }
+  .trailer-close-btn {
+    padding: 6px 8px;
+  }
+  .trailer-hud-footer {
+    font-size: 10px;
+  }
+}
